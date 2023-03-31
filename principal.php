@@ -9,11 +9,19 @@ session_start();
 if(isset($_SESSION['nombredelusuario']))
 {
 	$usuarioingresado = $_SESSION['nombredelusuario'];
-	echo "<h1>Bienvenido: $usuarioingresado </h1>";
+	$apellidousuario=$_SESSION['apellidousuario'];
+	$correousuario=$_SESSION['correousuario'];
+	echo "<h1>Bienvenido: $usuarioingresado. $apellidousuario </h1>";
+	echo "<p>$correousuario </p>";
+
 }
 else
 {
 	header('location: index.html');
+}
+if ($_SESSION['rolusuario'] == 'admin') {
+	echo 'eres el admin';
+	echo "<a href='administracion.php'> Administrar</a>";
 }
 ?>
 <form method="POST">
