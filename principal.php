@@ -19,9 +19,9 @@ else
 {
 	header('location: index.html');
 }
-if ($_SESSION['rol'] == 'admin') {
+if ($_SESSION['rolusuario'] == 'admin') {
 	echo 'eres el admin';
-	echo "<a href=''> Administrar</a>";
+	echo "<a href='administracion.php'> Administrar</a>";
 }
 ?>
 <form method="POST">

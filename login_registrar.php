@@ -51,7 +51,7 @@ if(mysqli_query($conn,$queryregistrar))
 	echo "<script> alert('Usuario registrado: $nombre');window.location= 'principal.php' </script>";
 	session_start();
 		$_SESSION['nombredelusuario']=$nombre;
-		$_SESSION['rol']= 'usuario';
+		$_SESSION['rolusuario']= 'usuario';
 		$_SESSION['apellidousuario']=$apellido;
 		$_SESSION['correousuario']=$correo;
 
