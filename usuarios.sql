@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-03-2023 a las 01:08:46
+-- Tiempo de generación: 12-04-2023 a las 03:54:28
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -20,6 +20,25 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `usuarios`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `rol_id` int(10) NOT NULL,
+  `rol` varchar(50) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`rol_id`, `rol`) VALUES
+(1, 'admin'),
+(2, 'usuario');
 
 -- --------------------------------------------------------
 
@@ -41,12 +60,17 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`usuarios_id`, `nombre`, `apellido`, `correo`, `contraseña`, `rol_id`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', '$2y$10$fOGJPM3T2Q/p0xBhAct0LeIpFi.qBNGB.4RixS6.f96HWmYtTLKeW', 1),
-(2, 'Juan', 'Diaz', 'juampi1732@gmail.com', '$2y$10$ROkglNtG8XI5M6N/xzZeC.LW040Eb0f4jqwbacesK2D4lfhEKOAQy', 2);
+(1, 'admin', 'admin', 'admin@admin.com', '$2y$10$fOGJPM3T2Q/p0xBhAct0LeIpFi.qBNGB.4RixS6.f96HWmYtTLKeW', 1);
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`rol_id`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -60,10 +84,16 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `rol_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `usuarios_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `usuarios_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- Restricciones para tablas volcadas
