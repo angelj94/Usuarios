@@ -23,7 +23,7 @@ if (($nr == 1) && (password_verify($contraseña,$mostrar['contraseña'])) )
 	}
 else
 	{
-	echo "<script> alert('Usuario o contraseña incorrecto.');/*window.location= 'index.html' </script>";
+	echo "<script> alert('Usuario o contraseña incorrecto.'); window.location= 'index.html' </script>";
 	}
 }
 

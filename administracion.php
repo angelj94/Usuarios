@@ -148,7 +148,19 @@ if (isset($_POST['metodo'])) {
                 ?>
             </tbody>
         </table>
-        </div> 
+        <form method="POST">
+<input type="submit" value="Cerrar sesión" name="btncerrar" />
+</form>
+
+<?php 
+
+if(isset($_POST['btncerrar']))
+{
+	session_destroy();
+	header('location: index.html');
+}
+	
+?>        </div> 
            
             </div>  
                         
