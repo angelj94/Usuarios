@@ -42,6 +42,7 @@ if (isset($_POST['metodo'])) {
 }
 ?>
 <html lang="es">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <head>
         <meta charset="UTF-8">
@@ -51,47 +52,79 @@ if (isset($_POST['metodo'])) {
     
     <body>
     <div class="cajafuera">
-        <form action="administracion.php" method="post">
-            <label for="usuario_id">ID de usuario</label>
-            <input type="number" name="usuario_id" id="" readonly <?php echo"value='$selectedID'";?>>
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="" <?php echo"value='$selectedNombre'";?>>
-            <label for="apellido">Apellido</label>
-            <input type="text" name="apellido" id="" <?php echo"value='$selectedApellido'";?>>
-            <label for="correo">Correo</label>
-            <input type="text" name="correo" id="" <?php echo"value='$selectedCorreo'";?>>
-            <label for="rol">Rol</label>
-            <select name="rol" id="">
-                <?php
-                $queryrol 	= mysqli_query($conn,"SELECT * FROM roles;");
-                $roles	= mysqli_fetch_all($queryrol);
-                foreach ($roles as $key => $value) {
-                    echo "<option value='$value[0]'";
-                    if (isset($selectedRol)) {
-                        if ($selectedRol==$value[0]) {
-                            echo " selected";
-                        }else{
-                            echo"";
-                        }
-                    }
-                    echo ">$value[1]</option>";
-                }
-                ?>
-            </select>
-            <input type="submit" name='metodo' value="Editar">
-            <input type="submit" name='metodo' value="Cancelar">
-        </form>
+        <div class="container-fluid"> 
+            <div class="row">        
+            <div class="col-2">     
+                                  
+                    <form  action="administracion.php" method="post">
+                         
+            <div class="col-2">
+                        <label for="usuario_id">ID de usuario</label>
+                        <input type="number" name="usuario_id" id="" readonly <?php echo"value='$selectedID'";?>>
+</div>  
+<div class="col-2">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" id="" <?php echo"value='$selectedNombre'";?>>
+</div>
+<div class="col-2">
+                        <label for="apellido">Apellido</label>
+                        <input type="text" name="apellido" id="" <?php echo"value='$selectedApellido'";?>>
+                        </div>
+<div class="col-2">
+                        <label for="correo">Correo</label>
+                        <input type="text" name="correo" id="" <?php echo"value='$selectedCorreo'";?>>
+                        </div>
+<div class="col-2">
+                        <label for="rol">Rol</label>
+                        <select name="rol" id="">
+</div>
+                    
+                            <?php
+                            $queryrol 	= mysqli_query($conn,"SELECT * FROM roles;");
+                            $roles	= mysqli_fetch_all($queryrol);
+                            foreach ($roles as $key => $value) {
+                                echo "<option value='$value[0]'";
+                                if (isset($selectedRol)) {
+                                    if ($selectedRol==$value[0]) {
+                                        echo " selected";
+                                    }else{
+                                        echo"";
+                                    }
+                                }
+                                echo ">$value[1]</option>";
+                            }
+                            ?>
+                        </select>
+                        <input class="btn btn-success" type="submit" name='metodo' value="Editar">
+                        </br>
+                        <input class="btn btn-secondary" type="submit" name='metodo' value="Cancelar">
+                        
+                
+                    </form>
+                        </div>  
+                        </div>                   
         <br>
+               
+          
+         
+          <div class="col-10">     
         <table>
             <thead>
                 <tr>
+                <div class="col-10"> 
                     <th>ID</th>
+                        </div>
                     <th>Nombre y apellido</th>
+                    
                     <th>Correo</th>
+                     
                     <th>Rol</th>
+                   
                     <th>Acción</th>
+                    
                 </tr>
             </thead>
+            
             <tbody>
                 <?php 
                     $queryusuario 	= mysqli_query($conn,"SELECT * FROM usuarios NATURAL JOIN roles WHERE usuarios_id != 1;");
@@ -106,8 +139,8 @@ if (isset($_POST['metodo'])) {
                         <td>
                             <form action='administracion.php' method='post'>
                                 <input type='hidden' name='usuario_id' value='$usuario[1]'>
-                                <input type='submit' name='metodo' value='Selecionar'>
-                                <input type='submit' name='metodo' value='Borrar'>
+                                <input class='btn btn-primary' type='submit' name='metodo' value='Selecionar'>
+                                <input class='btn btn-danger' type='submit' name='metodo' value='Borrar'>
                             </form>
                         </td>
                     </tr>";
@@ -115,7 +148,13 @@ if (isset($_POST['metodo'])) {
                 ?>
             </tbody>
         </table>
-    </div>
+        </div> 
+           
+            </div>  
+                        
+       
+           
+          
     
 </body>
 

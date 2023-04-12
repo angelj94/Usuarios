@@ -25,7 +25,7 @@ h1
 	background: linear-gradient(to bottom, #3380B5, white);
     height: 100%;
     width: 100%;
-    position: absolute;   
+      
 }
 .formulariocaja{
     width: 380px;
@@ -77,6 +77,7 @@ h1
 .logovai img
 {
     width: 120px;
+    
 }
 .grupo-entradas{
     top: 240px;
