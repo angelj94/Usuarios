@@ -5,6 +5,12 @@ session_start();
 if (!$_SESSION['rolusuario'] =='admin') {
     header("location: principal.php");
 }
+elseif(isset($_POST['btncerrar']))
+{
+	session_destroy();
+	header('location: index.html');
+}
+
 $SelectedRol =0;
 $selectedID = 0;
 $selectedNombre = '';
@@ -53,7 +59,7 @@ if (isset($_POST['metodo'])) {
     <body>
     <div class="cajafuera">
         <div class="container-fluid"> 
-            <div class="row">        
+            <div class="mb-3 row">        
             <div class="col-2">     
                                   
                     <form  action="administracion.php" method="post">
@@ -61,23 +67,23 @@ if (isset($_POST['metodo'])) {
             <div class="col-2">
                         <label for="usuario_id">ID de usuario</label>
                         <input type="number" name="usuario_id" id="" readonly <?php echo"value='$selectedID'";?>>
-</div>  
-<div class="col-2">
+            </div>  
+            <div class="col-2">
                         <label for="nombre">Nombre</label>
                         <input type="text" name="nombre" id="" <?php echo"value='$selectedNombre'";?>>
-</div>
-<div class="col-2">
+            </div>
+            <div class="col-2">
                         <label for="apellido">Apellido</label>
                         <input type="text" name="apellido" id="" <?php echo"value='$selectedApellido'";?>>
-                        </div>
-<div class="col-2">
+            </div>
+            <div class="col-2">
                         <label for="correo">Correo</label>
-                        <input type="text" name="correo" id="" <?php echo"value='$selectedCorreo'";?>>
-                        </div>
-<div class="col-2">
+                        <input type="email" name="correo" id="" <?php echo"value='$selectedCorreo'";?>>
+            </div>
+            <div class="col-2">
                         <label for="rol">Rol</label>
                         <select name="rol" id="">
-</div>
+            </div>
                     
                             <?php
                             $queryrol 	= mysqli_query($conn,"SELECT * FROM roles;");
@@ -95,9 +101,9 @@ if (isset($_POST['metodo'])) {
                             }
                             ?>
                         </select>
-                        <input class="btn btn-success" type="submit" name='metodo' value="Editar">
-                        </br>
-                        <input class="btn btn-secondary" type="submit" name='metodo' value="Cancelar">
+                        <input class="btn btn-success mb-3"  type="submit" name='metodo' value="Editar">
+                        
+                        <input class="btn btn-secondary mb-3" type="submit" name='metodo' value="Cancelar">
                         
                 
                     </form>
@@ -152,17 +158,10 @@ if (isset($_POST['metodo'])) {
 <input type="submit" value="Cerrar sesión" name="btncerrar" />
 </form>
 
-<?php 
-
-if(isset($_POST['btncerrar']))
-{
-	session_destroy();
-	header('location: index.html');
-}
-	
-?>        </div> 
+      
+ </div> 
            
-            </div>  
+</div>  
                         
        
            
