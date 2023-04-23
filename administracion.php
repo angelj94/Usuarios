@@ -60,7 +60,7 @@ if (isset($_POST['metodo'])) {
     <div class="cajafuera">
         <div class="container-fluid"> 
             <div class="mb-3 row">        
-            <div class="col-2">     
+            <div class="col-4">     
                                   
                     <form  action="administracion.php" method="post">
                          
@@ -101,69 +101,68 @@ if (isset($_POST['metodo'])) {
                             }
                             ?>
                         </select>
+                        
                         <input class="btn btn-success mb-3"  type="submit" name='metodo' value="Editar">
                         
                         <input class="btn btn-secondary mb-3" type="submit" name='metodo' value="Cancelar">
                         
-                
+                        <input class="btn btn-dark mb-3" type="submit" value="Cerrar sesión" name="btncerrar">
+                           
+       
                     </form>
+          
                         </div>  
                         </div>                   
-        <br>
+    
                
           
          
-          <div class="col-10">     
-        <table>
+          <div class="col-8">
+          <div class="table-responsive">
+          <table class="table table-primary table align-middle"> 
             <thead>
-                <tr>
-                <div class="col-10"> 
-                    <th>ID</th>
-                        </div>
-                    <th>Nombre y apellido</th>
+        <tr>
+            <th scope="col"> ID </th>         
+            <th scope="col"> Nombre y apellido </th>
+            <th scope="col"> Correo </th>    
+            <th scope="col"> Rol </th>
+            <th class="align-middle"colspan="2"> Acción </th>
+        </tr>     
+                        </thead>
                     
-                    <th>Correo</th>
-                     
-                    <th>Rol</th>
-                   
-                    <th>Acción</th>
-                    
-                </tr>
-            </thead>
-            
-            <tbody>
+                        <tbody class="table-group-divider">
                 <?php 
                     $queryusuario 	= mysqli_query($conn,"SELECT * FROM usuarios NATURAL JOIN roles WHERE usuarios_id != 1;");
                     $mostrar	    = mysqli_fetch_all($queryusuario); 
                 foreach ($mostrar as $key => $usuario) {
                     echo "
-                    <tr>
+                    <form action='administracion.php' method='post'>  
+                     <tr>
                     <td>$usuario[1]</td>
                     <td>$usuario[2] $usuario[3]</td>
                     <td>$usuario[4]</td>
                     <td>$usuario[6]</td>
-                        <td>
-                            <form action='administracion.php' method='post'>
+                                
+                            
                                 <input type='hidden' name='usuario_id' value='$usuario[1]'>
-                                <input class='btn btn-primary' type='submit' name='metodo' value='Selecionar'>
-                                <input class='btn btn-danger' type='submit' name='metodo' value='Borrar'>
-                            </form>
-                        </td>
-                    </tr>";
+                               <td> <input class='btn btn-primary' type='submit' name='metodo' value='Selecionar'>
+                            <input class='btn btn-danger' type='submit' name='metodo' value='Borrar'></td>
+                                
+                            
+                            </tr>
+                            </form> ";
+  
                 }
                 ?>
+            
+            
             </tbody>
-        </table>
-        <form method="POST">
-<input type="submit" value="Cerrar sesión" name="btncerrar" />
-</form>
-
+            </table>
       
  </div> 
            
 </div>  
-                        
-       
+        
            
           
     
