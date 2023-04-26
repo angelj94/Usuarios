@@ -16,8 +16,8 @@ if(isset($_SESSION['nombredelusuario']))
 	$usuarioingresado = $_SESSION['nombredelusuario'];
 	$apellidousuario=$_SESSION['apellidousuario'];
 	$correousuario=$_SESSION['correousuario'];
-	echo "<h1>Bienvenido:</h1>";
-	echo "<h1> $usuarioingresado. $apellidousuario </h1>";
+	echo "<h1 class='animate animated animate BackInLeft'>Bienvenido:</h1>";
+	echo "<h1> $usuarioingresado $apellidousuario </h1>";
 	echo "<small class='text-body-secondary'>$correousuario </small>";
 
 }
@@ -25,6 +25,7 @@ else
 {
 	header('location: index.html');
 }
+
 if ($_SESSION['rolusuario'] == 'admin') {
 	echo "<p>eres el admin</p>";
 	echo "<a href='administracion.php'> Administrar</a>";
@@ -32,11 +33,11 @@ if ($_SESSION['rolusuario'] == 'admin') {
 ?>
 
 <form method="POST">
-<tr><td colspan='2' align="center"><input class="btn btn-Primary mb-3"value="Cerrar sesión" name="btncerrar" /></td></tr>
+<input class="btn btn-Primary mb-3" value="Cerrar sesión" name="btncerrar"/>
 </form>
 </div>
 </div>
-</div>
+
 
 <?php
 
